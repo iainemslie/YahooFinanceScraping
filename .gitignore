@@ -3,3 +3,6 @@ scrapeenv
 
 # CSV data
 csv_data
+
+# Visualization data
+visualization/volume
