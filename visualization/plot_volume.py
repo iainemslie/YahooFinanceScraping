@@ -53,7 +53,7 @@ def plot_price(input_file):
     plt.title(f'One Year Price for {symbol}')
 
     plt.xlabel('Month')
-    plt.ylabel('Closing Price')
+    plt.ylabel('Closing Price ($USD)')
 
     plt.plot(df.Date, df.Close)
 
