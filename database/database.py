@@ -9,7 +9,8 @@ def create_connection(host_name, user_name, user_password):
         connection = mysql.connector.connect(
             host = host_name,
             user = user_name,
-            passwd = user_password
+            passwd = user_password,
+            autocommit=True
         )
         print("Connection to MySQL Database successful")
     except Error as e:
@@ -83,33 +84,33 @@ if __name__ == "__main__":
     # """
     # execute_query(connection, drop_table_query)
 
-    insert_string = """
-    USE yfinance;
-    INSERT INTO test VALUES (
-        "2023-07-07",
-        168.23,
-        168.64,
-        166.00,
-        167.14,
-        1315400,
-        0.00,
-        0.00
-    );
-    """
-    execute_query(connection, insert_string)
+    # insert_string = """
+    # USE yfinance;
+    # INSERT INTO test VALUES (
+    #     "2023-07-07",
+    #     168.23,
+    #     168.64,
+    #     166.00,
+    #     167.14,
+    #     1315400,
+    #     0.00,
+    #     0.00
+    # );
+    # """
+    # execute_query(connection, insert_string)
 
 
-    # with open('csv_data\ZTS_1y.csv', 'r') as infile:
-    #     csvreader = csv.reader(infile)
-    #     for index, row in enumerate(csvreader):
-    #         if index == 0:
-    #             formatted_table_query = create_formatted_table_query('test', row)
-    #             print(formatted_table_query)
-    #             execute_query(connection, formatted_table_query)
-    #         else:
-    #             connection.reconnect()
-    #             insert_query = create_formatted_insert_query('test', row)
-    #             print(insert_query)
-    #             execute_query(connection, insert_query)
+    with open('csv_data\ZTS_1y.csv', 'r') as infile:
+        csvreader = csv.reader(infile)
+        for index, row in enumerate(csvreader):
+            if index == 0:
+                formatted_table_query = create_formatted_table_query('test', row)
+                # print(formatted_table_query)
+                execute_query(connection, formatted_table_query)
+            else:
+                connection.reconnect()
+                insert_query = create_formatted_insert_query('test', row)
+                # print(insert_query)
+                execute_query(connection, insert_query)
 
-    # connection.close()
+    connection.close()
