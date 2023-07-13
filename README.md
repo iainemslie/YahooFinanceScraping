@@ -26,7 +26,7 @@ $ pip install requirements.txt
 
 1. ✅ Use SQL Alchemy to insert Pandas Dataframe directly when getting data from yfinance
 2. For each symbol create a database table, get 5y historical data, then at end of each day update the table with the daily price info
-3. Create visualizations using matplotlib etc.
+3. Create visualizations using matplotlib etc directly from database.
 4. Figure out why some downloads fail for "The following 'Dividends' events are out-of-range"
 
 # References

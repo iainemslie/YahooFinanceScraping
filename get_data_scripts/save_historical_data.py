@@ -59,5 +59,5 @@ def save_historical_data_to_db(symbol_path, time_period, connection):
 url_string = "mysql+pymysql://root:password@127.0.0.1/yfinance"
 engine = sql.create_engine(url = url_string, echo = False, connect_args=dict(host='localhost', port=3306))
 connection = engine.connect()
-save_historical_data_to_db('ticker_symbols\S&P\s&p_symbols.txt', 'csv_data', '1y', connection=connection)
+save_historical_data_to_db('ticker_symbols\S&P\s&p_symbols.txt', 'csv_data', '5y', connection=connection)
 connection.close()
