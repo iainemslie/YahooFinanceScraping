@@ -2,13 +2,19 @@
 Using yfinance to download stock data from yahoo finance
 
 ## Create and setup a virtual env
-- `python -m venv scrapeenv`
+```sh
+$ python -m venv scrapeenv
+```
 
 ### Activate the virtual env
-- `source scrapeenv/Scripts/activate`
+```sh 
+$ source scrapeenv/Scripts/activate
+```
 
 ### Install requirements
-- `pip install requirements.txt`
+```
+$ pip install requirements.txt
+```
 
 # Directories
 
@@ -18,6 +24,13 @@ Using yfinance to download stock data from yahoo finance
 
 # TODO
 
-1. For each symbol create a database table, get 5y historical data, then at end of each day update the table with the daily price info
-2. Create visualizations using matplotlib etc.
-3. Figure out why some downloads fail for "The following 'Dividends' events are out-of-range"
+1. ✅ Use SQL Alchemy to insert Pandas Dataframe directly when getting data from yfinance
+2. For each symbol create a database table, get 5y historical data, then at end of each day update the table with the daily price info
+3. Create visualizations using matplotlib etc.
+4. Figure out why some downloads fail for "The following 'Dividends' events are out-of-range"
+
+# References
+
+- [PandasDocs](https://pandas.pydata.org/docs/index.html)
+- [SQLAlchemyDocs](https://docs.sqlalchemy.org/en/20/core/connections.html)
+    - [EngineConfig](https://docs.sqlalchemy.org/en/20/core/engines.html#custom-dbapi-args)
