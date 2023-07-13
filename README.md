@@ -13,7 +13,7 @@ $ source scrapeenv/Scripts/activate
 
 ### Install requirements
 ```
-$ pip install requirements.txt
+$ pip install -r requirements.txt
 ```
 
 # Directories
@@ -26,9 +26,11 @@ $ pip install requirements.txt
 
 1. ✅ Use SQL Alchemy to insert Pandas Dataframe directly when getting data from yfinance
 2. ✅ Make sure datetime info is included for the new tables (removed index = False)
-3. For each symbol create a database table, get 5y historical data, then at end of each day update the table with the daily price info
+3. For each symbol create a database table, get 5y historical data, then at end of each day (task scheduler) update the table with the daily price info
 4. Create visualizations using matplotlib etc directly from database.
 5. Figure out why some downloads fail for "The following 'Dividends' events are out-of-range"
+6. Update the visualization scripts to pull from database instead of .csv files
+7. Compile daily reports based on daily price action for all symbols in S&P
 
 # References
 
