@@ -33,18 +33,20 @@ def save_historical_data(symbol_path, time_period, connection = None, output_dir
                     print(f"Successfully created .csv file {file_path}")
 
                 if connection is not None:
-                    ticker_history.to_sql(name=symbol.lower(), con=connection, if_exists='replace')
+                    ticker_history.to_sql(name=symbol.lower(), con=connection, if_exists='append')
                     print(f"Successfully created table for {symbol}")
                 
             except Exception as e:
                 print(f"Error for {symbol}:")
                 print(e)
 
-# save_historical_data_as_csv('ticker_symbols\S&P\s&p_symbols.txt', 'csv_data', '1y')
 
-# SQL
-url_string = "mysql+pymysql://root:password@127.0.0.1/yfinance"
-engine = sql.create_engine(url = url_string, echo = False, connect_args=dict(host='localhost', port=3306))
-connection = engine.connect()
-save_historical_data('ticker_symbols\S&P\s&p_symbols.txt', '1y', connection=connection)
-connection.close()
+if __name__ == "__main__":
+    symbol_path = 'ticker_symbols\S&P\s&p_symbols.txt'
+
+    url_string = "mysql+pymysql://root:password@127.0.0.1/yfinance"
+    host_port = dict(host='localhost', port=3306)
+    engine = sql.create_engine(url = url_string, echo = False, connect_args=host_port)
+    connection = engine.connect()
+    save_historical_data(symbol_path, '1y', connection=connection)
+    connection.close()
