@@ -1,6 +1,6 @@
 import yfinance as yf
 import sqlalchemy as sql
-import os
+import datetime
 
 def get_symbol_list(symbol_path):
     """
@@ -19,7 +19,7 @@ def get_symbol_list(symbol_path):
             symbol_list.append(line.strip())
     return symbol_list
 
-def save_historical_data(symbol_list, period, interval, prepost=False, connection = None, output_dir = None):
+def save_historical_data(symbol_list, period, interval, prepost=False, connection = None, output_dir = None, date_today = None):
     """
     Reads list of ticker symbols and gets data from yfinance then saves it to sql database or csv file
         
@@ -39,7 +39,11 @@ def save_historical_data(symbol_list, period, interval, prepost=False, connectio
                 SQLAlchemy connection object - if connection is None then don't write to DB
             output_dir : (str)
                 If output_dir is not None then write .csv file to the path
+            date_today : (obj)
+                Adds todays date to table name if argument passed
     """
+    if not date_today:
+        date_today = ""
 
     if not connection and not output_dir:
         print("No connection or output directory provided: nothing to do")
@@ -56,8 +60,9 @@ def save_historical_data(symbol_list, period, interval, prepost=False, connectio
                     print(f"Successfully created .csv file {file_path}")
 
                 if connection:
-                    ticker_history.to_sql(name=symbol.lower(), con=connection, if_exists='append',)
-                    print(f"Successfully created table for {symbol}")
+                    table_name = f'{symbol.lower()}_{period}_{interval}_{date_today}'
+                    ticker_history.to_sql(name=table_name, con=connection, if_exists='append',)
+                    print(f"Successfully created table for {table_name}")
                 
             except Exception as e:
                 print(f"Error for {symbol}:")
@@ -65,6 +70,9 @@ def save_historical_data(symbol_list, period, interval, prepost=False, connectio
 
 
 if __name__ == "__main__":
+    date_today = datetime.date.today()
+    date_today = date_today.replace(day=13) # Since we're doing this day after
+
     symbol_path = 'ticker_symbols\S&P\s&p_symbols.txt'
     symbol_list = get_symbol_list(symbol_path)
 
@@ -72,5 +80,5 @@ if __name__ == "__main__":
     host_port = dict(host='localhost', port=3306)
     engine = sql.create_engine(url = url_string, echo = False, connect_args=host_port)
     connection = engine.connect()
-    save_historical_data(symbol_list, period='1d', interval='1m', prepost=False, connection=connection)
+    save_historical_data(symbol_list, period='1d', interval='1m', prepost=False, connection=connection, date_today=date_today)
     connection.close()
