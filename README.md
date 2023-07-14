@@ -32,6 +32,7 @@ $ pip install -r requirements.txt
 6. Update the visualization scripts to pull from database instead of .csv files
 7. Compile daily reports based on daily price action for all symbols in S&P
 8. When we get daily data, create additional single table to compare all symbols
+9. Use Matplotlib to create candle charts for 1d 1m data
 
 # References
 
