@@ -7,10 +7,21 @@ def save_historical_data(symbol_path, period, interval, prepost, connection = No
     Reads list of ticker symbols from .txt file, gets data from yfinance and saves it to sql database or csv file
         
         Parameters:
-            symbol_path (str): path to .txt file at symbol_path containing one ticker symbol per line
-            period (str): time period to get data for e.g. 1m, 1y, 1d
-            connection (obj): SQLAlchemy connection object - if connection is None then don't write to DB
-            output_dir (str): if output_dir is not None then write .csv file to the path
+            symbol_path : str
+                Path to .txt file at symbol_path containing one ticker symbol per line
+            period : str
+                Valid periods: 1d,5d,1mo,3mo,6mo,1y,2y,5y,10y,ytd,max
+                Either Use period parameter or use start and end
+            interval : str
+                Valid intervals: 1m,2m,5m,15m,30m,60m,90m,1h,1d,5d,1wk,1mo,3mo
+                Intraday data cannot extend last 60 days
+            prepost : bool
+                Include Pre and Post market data in results?
+                Default is False
+            connection : (obj)
+                SQLAlchemy connection object - if connection is None then don't write to DB
+            output_dir : (str)
+                If output_dir is not None then write .csv file to the path
     """
 
     symbol_list = []
@@ -48,5 +59,5 @@ if __name__ == "__main__":
     host_port = dict(host='localhost', port=3306)
     engine = sql.create_engine(url = url_string, echo = False, connect_args=host_port)
     connection = engine.connect()
-    save_historical_data(symbol_path, interval='1d', period='1y', prepost=False, connection=connection)
+    save_historical_data(symbol_path, interval='1d', period='1m', prepost=False, connection=connection)
     connection.close()
