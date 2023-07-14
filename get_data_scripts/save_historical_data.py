@@ -59,5 +59,5 @@ if __name__ == "__main__":
     host_port = dict(host='localhost', port=3306)
     engine = sql.create_engine(url = url_string, echo = False, connect_args=host_port)
     connection = engine.connect()
-    save_historical_data(symbol_path, interval='1d', period='1m', prepost=False, connection=connection)
+    save_historical_data(symbol_path, period='1d', interval='1m', prepost=False, connection=connection)
     connection.close()
