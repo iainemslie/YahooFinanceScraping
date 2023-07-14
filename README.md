@@ -21,7 +21,7 @@ $ pip install -r requirements.txt
 
 1. /csv_data - contains historical price data .csv files for each ticker symbol
 2. /get_data_scripts - scripts for accessing and saving data from yfinance
-3. /ticker_symbols - contains mostly .txt files of groups of ticker symbols, S&P500 etc.
+3. /ticker_symbols - contains mostly .txt files of groups of ticker symbols, S&P500, TSX60 etc.
 
 # TODO
 
@@ -38,3 +38,4 @@ $ pip install -r requirements.txt
 - [PandasDocs](https://pandas.pydata.org/docs/index.html)
 - [SQLAlchemyDocs](https://docs.sqlalchemy.org/en/20/core/connections.html)
     - [EngineConfig](https://docs.sqlalchemy.org/en/20/core/engines.html#custom-dbapi-args)
+- [ColorPaletteGenerator](http://vrl.cs.brown.edu/color)
