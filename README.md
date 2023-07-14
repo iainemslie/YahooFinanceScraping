@@ -1,5 +1,6 @@
 # YahooFinanceScraping
-Using yfinance to download stock data from yahoo finance
+Using yfinance to download stock data from yahoo finance and save this to a local MySQL database  
+Using matplotlib to visualize data
 
 ## Create and setup a virtual env
 ```sh
@@ -24,16 +25,13 @@ $ pip install -r requirements.txt
 
 # TODO
 
-1. ✅ Use SQL Alchemy to insert Pandas Dataframe directly when getting data from yfinance
-2. ✅ Make sure datetime info is included for the new tables (removed index = False)
-3. For each symbol create a database table, get 5y historical data, then at end of each day (task scheduler) update the table with the daily price info
-4. Create visualizations using matplotlib etc directly from database.
-5. Figure out why some downloads fail for "The following 'Dividends' events are out-of-range"
-6. Update the visualization scripts to pull from database instead of .csv files
-7. Get daily 1d 1m tables as well as updating 1y 1d tables at end of day
-8. Compile daily reports based on daily price action for all symbols in S&P
-9. When we get daily data, create additional single table to compare all symbols
-10. Use Matplotlib to create candle charts for 1d 1m data
+1. Update the visualization scripts to pull from database instead of .csv files
+2. At end of each day add to yfinance_daily and yfinance_yearly (task scheduler)
+3. Create visualizations using matplotlib etc directly from database.
+4. Figure out why some downloads fail for "The following 'Dividends' events are out-of-range"
+5. Compile daily reports based on daily price action for all symbols in S&P
+6. When we get daily data, create additional single table to compare all symbols
+7. Use Matplotlib to create candle charts for 1d 1m data
 
 # References
 

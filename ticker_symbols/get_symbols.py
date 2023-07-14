@@ -1,6 +1,6 @@
 
 symbol_list = []
-with open('ticker_symbols/S&P/s&p500_raw.txt', 'r') as infile:
+with open('ticker_symbols/TSX/tsx_raw.txt', 'r') as infile:
     for line in infile:
         symbol = line.split(' ')[0]
         # yfinance formats with a dash instead of a dot
@@ -9,7 +9,7 @@ with open('ticker_symbols/S&P/s&p500_raw.txt', 'r') as infile:
 
 # print(symbol_list)
 
-with open('ticker_symbols/S&P/s&p_symbols.txt', 'w') as outfile:
+with open('ticker_symbols/TSX/tsx_symbols.txt', 'w') as outfile:
     for symbol in symbol_list:
-        outfile.write(f'{symbol}\n')
+        outfile.write(f'{symbol}.TO\n')
 

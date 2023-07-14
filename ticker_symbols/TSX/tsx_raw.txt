@@ -1,0 +1,60 @@
+AEM 	Agnico Eagle Mines Limited 	Basic Materials
+AQN 	Algonquin Power & Utilities Corp. 	Utilities
+ATD 	Alimentation Couche-Tard Inc. 	Consumer Staples
+BCE 	BCE Inc. 	Communication Services
+BMO 	Bank of Montreal 	Financial Services
+BNS 	Bank of Nova Scotia 	Financial Services
+ABX 	Barrick Gold Corporation 	Basic Materials
+BAM 	Brookfield Asset Management Inc. 	Financial Services
+BIP.UN 	Brookfield Infrastructure Partners L.P. 	Utilities
+CAE 	CAE Inc. 	Industrials
+CCL.B 	CCL Industries Inc. 	Consumer Cyclical
+GIB.A 	CGI Inc. 	Information Technology
+CCO 	Cameco Corporation 	Energy
+CAR.UN 	Canadian Apartment Properties Real Estate Investment Trust 	Real Estate
+CM 	Canadian Imperial Bank of Commerce 	Financial Services
+CNR 	Canadian National Railway Company 	Industrials
+CNQ 	Canadian Natural Resources Limited 	Energy
+CP 	Canadian Pacific Railway Limited 	Industrials
+CTC.A 	Canadian Tire Corporation Limited 	Consumer Cyclical
+CVE 	Cenovus Energy Inc. 	Energy
+CSU 	Constellation Software Inc. 	Information Technology
+DOL 	Dollarama Inc. 	Consumer Staples
+EMA 	Emera Incorporated 	Utilities
+ENB 	Enbridge Inc. 	Energy
+FM 	First Quantum Minerals Ltd. 	Basic Materials
+FSV 	FirstService Corporation 	Real Estate
+FTS 	Fortis Inc. 	Utilities
+FNV 	Franco-Nevada Corporation 	Basic Materials
+WN 	George Weston Limited 	Consumer Staples
+GIL 	Gildan Activewear Inc. 	Consumer Cyclical
+IMO 	Imperial Oil Limited 	Energy
+IFC 	Intact Financial Corporation 	Financial Services
+H 	Hydro One Limited 	Utilities
+K 	Kinross Gold Corporation 	Basic Materials
+L 	Loblaw Companies Limited 	Consumer Staples
+MG 	Magna International Inc. 	Consumer Cyclical
+MFC 	Manulife Financial Corporation 	Financial Services
+MRU 	Metro Inc. 	Consumer Staples
+NA 	National Bank of Canada 	Financial Services
+NTR 	Nutrien Ltd. 	Basic Materials
+OTEX 	Open Text Corporation 	Information Technology
+PPL 	Pembina Pipeline Corporation 	Energy
+POW 	Power Corporation of Canada 	Financial Services
+QSR 	Restaurant Brands International Inc. 	Consumer Cyclical
+RCI.B 	Rogers Communications Inc. 	Communication Services
+RY 	Royal Bank of Canada 	Financial Services
+SNC 	SNC-Lavalin Group Inc. 	Industrials
+SAP 	Saputo Inc. 	Consumer Staples
+SHOP 	Shopify Inc. 	Information Technology
+SLF 	Sun Life Financial Inc. 	Financial Services
+SU 	Suncor Energy Inc. 	Energy
+TRP 	TC Energy Corporation 	Energy
+TECK.B 	Teck Resources Limited 	Basic Materials
+T 	Telus Corporation 	Communication Services
+TRI 	Thomson Reuters Corporation 	Industrials
+TD 	Toronto-Dominion Bank 	Financial Services
+TOU 	Tourmaline Oil Corp. 	Energy
+WCN 	Waste Connections Inc. 	Industrials
+WPM 	Wheaton Precious Metals Corp. 	Basic Materials
+WSP 	WSP Global Inc. 	Industrials 
