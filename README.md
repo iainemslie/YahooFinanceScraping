@@ -30,9 +30,10 @@ $ pip install -r requirements.txt
 4. Create visualizations using matplotlib etc directly from database.
 5. Figure out why some downloads fail for "The following 'Dividends' events are out-of-range"
 6. Update the visualization scripts to pull from database instead of .csv files
-7. Compile daily reports based on daily price action for all symbols in S&P
-8. When we get daily data, create additional single table to compare all symbols
-9. Use Matplotlib to create candle charts for 1d 1m data
+7. Get daily 1d 1m tables as well as updating 1y 1d tables at end of day
+8. Compile daily reports based on daily price action for all symbols in S&P
+9. When we get daily data, create additional single table to compare all symbols
+10. Use Matplotlib to create candle charts for 1d 1m data
 
 # References
 
