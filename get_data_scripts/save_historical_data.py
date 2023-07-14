@@ -1,6 +1,5 @@
 import yfinance as yf
 import sqlalchemy as sql
-import datetime
 
 def get_symbol_list(symbol_path):
     """
@@ -19,7 +18,7 @@ def get_symbol_list(symbol_path):
             symbol_list.append(line.strip())
     return symbol_list
 
-def save_historical_data(symbol_list, period, interval, prepost=False, connection = None, output_dir = None, date_today = None):
+def save_historical_data(symbol_list, period, interval, prepost=False, connection = None, output_dir = None):
     """
     Reads list of ticker symbols and gets data from yfinance then saves it to sql database or csv file
         
@@ -42,8 +41,6 @@ def save_historical_data(symbol_list, period, interval, prepost=False, connectio
             date_today : (obj)
                 Adds todays date to table name if argument passed
     """
-    if not date_today:
-        date_today = ""
 
     if not connection and not output_dir:
         print("No connection or output directory provided: nothing to do")
@@ -60,7 +57,7 @@ def save_historical_data(symbol_list, period, interval, prepost=False, connectio
                     print(f"Successfully created .csv file {file_path}")
 
                 if connection:
-                    table_name = f'{symbol.lower()}_{period}_{interval}_{date_today}'
+                    table_name = symbol.lower()
                     ticker_history.to_sql(name=table_name, con=connection, if_exists='append',)
                     print(f"Successfully created table for {table_name}")
                 
@@ -68,17 +65,26 @@ def save_historical_data(symbol_list, period, interval, prepost=False, connectio
                 print(f"Error for {symbol}:")
                 print(e)
 
+def get_charts(symbol_list, period):
+    if period == '1y':
+        url_string = "mysql+pymysql://root:password@127.0.0.1/yfinance_yearly"
+        period = '1y'
+        interval = '1d'
+    if period == '1d':
+        url_string = "mysql+pymysql://root:password@127.0.0.1/yfinance_daily"
+        period = '1d'
+        interval = '1m'
+    if period != '1y' and period != '1d':
+        return
 
-if __name__ == "__main__":
-    date_today = datetime.date.today()
-    date_today = date_today.replace(day=13) # Since we're doing this day after
-
-    symbol_path = 'ticker_symbols\S&P\s&p_symbols.txt'
-    symbol_list = get_symbol_list(symbol_path)
-
-    url_string = "mysql+pymysql://root:password@127.0.0.1/yfinance"
     host_port = dict(host='localhost', port=3306)
     engine = sql.create_engine(url = url_string, echo = False, connect_args=host_port)
     connection = engine.connect()
-    save_historical_data(symbol_list, period='1d', interval='1m', prepost=False, connection=connection, date_today=date_today)
+    save_historical_data(symbol_list, period=period, interval=interval, prepost=False, connection=connection)
     connection.close()
+
+
+if __name__ == "__main__":
+    symbol_path = 'ticker_symbols\S&P\s&p_symbols.txt'
+    symbol_list = get_symbol_list(symbol_path)
+    get_charts(symbol_list, "1d")
