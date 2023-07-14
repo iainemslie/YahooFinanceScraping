@@ -2,13 +2,13 @@ import yfinance as yf
 import sqlalchemy as sql
 import os
 
-def save_historical_data(symbol_path, time_period, connection = None, output_dir = None):
+def save_historical_data(symbol_path, period, interval, prepost, connection = None, output_dir = None):
     """
     Reads list of ticker symbols from .txt file, gets data from yfinance and saves it to sql database or csv file
         
         Parameters:
             symbol_path (str): path to .txt file at symbol_path containing one ticker symbol per line
-            time_period (str): time period to get data for e.g. 1m, 1y, 1d
+            period (str): time period to get data for e.g. 1m, 1y, 1d
             connection (obj): SQLAlchemy connection object - if connection is None then don't write to DB
             output_dir (str): if output_dir is not None then write .csv file to the path
     """
@@ -25,15 +25,15 @@ def save_historical_data(symbol_path, time_period, connection = None, output_dir
     for symbol in symbol_list:
             try:
                 ticker = yf.Ticker(symbol)
-                ticker_history = ticker.history(period=time_period)
+                ticker_history = ticker.history(period=period, interval=interval, rounding=True, prepost=prepost)
 
                 if output_dir:
-                    file_path = f'{output_dir}/{symbol}_{time_period}.csv'
+                    file_path = f'{output_dir}/{symbol}_{period}.csv'
                     ticker_history.to_csv(file_path)
                     print(f"Successfully created .csv file {file_path}")
 
                 if connection:
-                    ticker_history.to_sql(name=symbol.lower(), con=connection, if_exists='append')
+                    ticker_history.to_sql(name=symbol.lower(), con=connection, if_exists='append',)
                     print(f"Successfully created table for {symbol}")
                 
             except Exception as e:
@@ -48,5 +48,5 @@ if __name__ == "__main__":
     host_port = dict(host='localhost', port=3306)
     engine = sql.create_engine(url = url_string, echo = False, connect_args=host_port)
     connection = engine.connect()
-    save_historical_data(symbol_path, '1y', connection=connection)
+    save_historical_data(symbol_path, interval='1d', period='1y', prepost=False, connection=connection)
     connection.close()
