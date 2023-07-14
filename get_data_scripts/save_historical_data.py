@@ -18,7 +18,7 @@ def save_historical_data(symbol_path, time_period, connection = None, output_dir
         for line in infile:
             symbol_list.append(line.strip())
 
-    if connection is None and output_dir is None:
+    if not connection and not output_dir:
         print("No connection or output directory provided: nothing to do")
         return
             
@@ -27,12 +27,12 @@ def save_historical_data(symbol_path, time_period, connection = None, output_dir
                 ticker = yf.Ticker(symbol)
                 ticker_history = ticker.history(period=time_period)
 
-                if output_dir is not None:
+                if output_dir:
                     file_path = f'{output_dir}/{symbol}_{time_period}.csv'
                     ticker_history.to_csv(file_path)
                     print(f"Successfully created .csv file {file_path}")
 
-                if connection is not None:
+                if connection:
                     ticker_history.to_sql(name=symbol.lower(), con=connection, if_exists='append')
                     print(f"Successfully created table for {symbol}")
                 
